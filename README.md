@@ -24,7 +24,7 @@
 | category_id   | integer     | null: false                   |
 | detail_id     | integer     | null: false                   |
 | postage_id    | integer     | null: false                   |
-| prefectures_id| integer     | null: false                   |
+| prefecture_id| integer     | null: false                   |
 | period_date_id| integer     | null: false                   |
 | price         | int         | null: false                   |
 | user          | references  | null: false, foreign_key: true|
