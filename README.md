@@ -56,11 +56,11 @@
 ## address テーブル
 | Column        | Type        | Options                       |
 |:--------------|------------:|:-----------------------------:|
-| postcode      | int         | null: false                   |
+| postcode      | string      | null: false                   |
 | prefectures_id| integer     | null: false                   |
 | city          | string      | null: false                   |
 | block         | string      | null: false                   |
-| building      | string      | null: false                   |
+| building      | string      |                               |
 | tel_number    | string      | null: false                   |
 | buy           | references  | null: false, foreign_key: true|
 - belongs_to :buy
