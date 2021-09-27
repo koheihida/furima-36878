@@ -46,7 +46,6 @@
 ## buys テーブル
 | Column     | Type        | Options                       |
 |:-----------|------------:|:-----------------------------:|
-| address    | references  | null: false, foreign_key: true|
 | user       | references  | null: false, foreign_key: true|
 | item       | references  | null: false, foreign_key: true|
 ### Association
@@ -62,7 +61,7 @@
 | city          | string      | null: false                   |
 | block         | string      | null: false                   |
 | building      | string      | null: false                   |
-| tel_number    | int         | null: false                   |
-| user          | references  | null: false, foreign_key: true|
-| item          | references  | null: false, foreign_key: true|
+| tel_number    | string      | null: false                   |
+| buy           | references  | null: false, foreign_key: true|
 - belongs_to :buy
+
