@@ -1,16 +1,12 @@
 class Item < ApplicationRecord
   has_one_attached :image
+  validates :image, presence: true
   extend ActiveHash::Associations::ActiveRecordExtensions 
 
   validates :goode_name,           presence: true
   validates :explanation,          presence: true
-  # validates :category_id,          presence: true
-  # validates :detail_id,            presence: true
-  # validates :postage_id,           presence: true
-  # validates :prefecture_id,        presence: true
-  # validates :period_date_id,       presence: true
-  validates :price,                presence: true
-
+  validates :price,                presence: true, format: {with: /\A[0-9]+\z/}
+  
   has_many :comments
   belongs_to :user
   has_one :buy
