@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 2021_09_29_111434) do
     t.integer "postage_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "period_date_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

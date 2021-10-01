@@ -8,5 +8,5 @@ window.addEventListener('load', () => {
     const TotalProfit = item_price.value - fee ;
     const profit = document.getElementById("profit");
     profit.innerHTML = `${TotalProfit}`;
-})
+  })
 })
