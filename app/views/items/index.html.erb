@@ -128,7 +128,7 @@
     </div>
     <ul class='item-lists'>
 
-     
+     <%# 条件分岐 ダミー %>
       <% @items.each do |item| %>
       <li class='list'>
       <%= link_to item_path(item.id) do %>
@@ -157,9 +157,6 @@
         <% end %>
       </li>
       
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
     <% if @items.blank? %>  
       <li class='list'>
         <%= link_to '#' do %>
