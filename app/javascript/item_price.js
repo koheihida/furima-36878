@@ -8,14 +8,5 @@ window.addEventListener('load', () => {
     const TotalProfit = item_price.value - fee ;
     const profit = document.getElementById("profit");
     profit.innerHTML = `${TotalProfit}`;
-  
-
-
-
-  //  const inputValue = priceInput.value;
-  //  console.log(inputValue);
-
-  //  const addTaxDom = document.getElementById("add-tax-price");
-  //  addTaxDom.innerHTML = "入力した金額をもとに販売手数料を計算する処理"
 })
 })
