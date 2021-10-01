@@ -6,7 +6,6 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.integer :postage_id     , null: false
       t.integer :prefecture_id  , null: false
       t.integer :period_date_id , null: false
-      t.timestamps
     end
   end
 end
