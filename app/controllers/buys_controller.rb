@@ -1,14 +1,14 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!
+  before_action :buy_set, only: [:index, :create, :move_to_index]
   before_action :move_to_index
 
+
   def index
-    @item = Item.find(params[:item_id])
     @buy = BuysAddress.new
   end
   
   def create
-    @item = Item.find(params[:item_id])
     @buy = BuysAddress.new(address_params)
     if @buy.valid?
       pay_item
@@ -25,7 +25,7 @@ class BuysController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_6c7838d730073977ed269212"  
+    Payjp.api_key =  ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
       card: address_params[:token],   
@@ -34,11 +34,13 @@ class BuysController < ApplicationController
   end
 
   def move_to_index
-    @item = Item.find(params[:item_id])
     if @item.buy.present? || current_user.id == @item.user.id
       redirect_to root_path
     end
-  
+  end
+
+  def buy_set
+    @item = Item.find(params[:item_id])
   end
 
 end

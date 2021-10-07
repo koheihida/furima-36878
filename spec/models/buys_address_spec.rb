@@ -53,6 +53,48 @@ RSpec.describe BuysAddress, type: :model do
       @buy.valid?
       expect(@buy.errors.full_messages).to include("Prefectures can't be select")
     end
+
+    it '市区町村が空の時' do
+      @buy.city = ""
+      @buy.valid?
+      expect(@buy.errors.full_messages).to include("City can't be blank")
+    end
+
+    it '番地が空の時' do
+      @buy.block = ""
+      @buy.valid?
+      expect(@buy.errors.full_messages).to include("Block can't be blank")
+    end
+    
+    it '電話番号がからの時' do
+      @buy.tel_number = ""
+      @buy.valid? 
+      expect(@buy.errors.full_messages).to include("Tel number can't be blank")
+    end
+
+    it '電話番号が全角' do
+      @buy.tel_number  = "０９００８２８０８２８"
+      @buy.valid?
+      expect(@buy.errors.full_messages).to include("Tel number Phone number is an invalid value")
+    end
+
+    it '電話番号の桁が足りない'do
+    @buy.tel_number  = "0828"
+    @buy.valid?
+    expect(@buy.errors.full_messages).to include("Tel number Phone number is an invalid value")
+    end
+
+    it '電話番号の桁が多い'do
+    @buy.tel_number  = "0828082808280828"
+    @buy.valid?
+    expect(@buy.errors.full_messages).to include("Tel number Phone number is an invalid value")
+    end
+
+    it '電話番号の桁に-がある'do
+    @buy.tel_number  = "090-0828-0828"
+    @buy.valid?
+    expect(@buy.errors.full_messages).to include("Tel number Phone number is an invalid value")
+    end
   end
 end
 
