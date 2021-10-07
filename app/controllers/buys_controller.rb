@@ -1,18 +1,16 @@
 class BuysController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!
+  before_action :move_to_index
 
   def index
     @item = Item.find(params[:item_id])
     @buy = BuysAddress.new
   end
-  # 1.フォームオブジェクトのmodelに保存できるようにする　L17
-  # 2.create = new + save なので
-  # 3.params を１つにする(address_params)の記述を見直す
+  
   def create
     @item = Item.find(params[:item_id])
     @buy = BuysAddress.new(address_params)
     if @buy.valid?
-     
       pay_item
       @buy.save
       return redirect_to root_path
@@ -33,6 +31,14 @@ class BuysController < ApplicationController
       card: address_params[:token],   
       currency: 'jpy'                 
     )
+  end
+
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    if @item.buy.present? || current_user.id == @item.user.id
+      redirect_to root_path
+    end
+  
   end
 
 end
