@@ -2,14 +2,13 @@ require 'rails_helper'
 
 RSpec.describe BuysAddress, type: :model do
   before do    
-    @item = FactoryBot.build(:item)
-    @user = FactoryBot.build(:user)
+    @item = FactoryBot.create(:item)
+    @user = FactoryBot.create(:user)
     @buy = FactoryBot.build(:buys_address, user_id: @user.id, item_id: @item.id)
   end
 
   context '内容に問題ない場合' do
     it "全ての項目が入力されていれば購入できる" do
-      # binding.pry
       expect(@buy).to be_valid
     end
 
