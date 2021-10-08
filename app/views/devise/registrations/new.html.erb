@@ -12,7 +12,10 @@
 
   
    <%=  render 'shared/error_messages', model: f.object %> 
-  
+  <div class="sns">
+    <%= link_to "Facebookで登録", user_facebook_omniauth_authorize_path, method: :post%>
+    <%= link_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, method: :post%>
+  </div>
 
   <div class="form-group">
     <div class='form-text-wrap'>
